@@ -53,7 +53,7 @@ public class CartService {
             item.setQuantity(cartDTO.getQuantity());
             item.setPrice(cartDTO.getQuantity()*product.get().getPrice());
             cartRepository.save(item);
-            return ResponseEntity.ok("Item added to cart");
+            return ResponseEntity.ok("{\"message\": \"Item added to cart\"}");
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User or product not found");
     }
