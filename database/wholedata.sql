@@ -35,7 +35,7 @@ CREATE TABLE `cart_items` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=963 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `cart_items_seq` (
 
 LOCK TABLES `cart_items_seq` WRITE;
 /*!40000 ALTER TABLE `cart_items_seq` DISABLE KEYS */;
-INSERT INTO `cart_items_seq` VALUES (201);
+INSERT INTO `cart_items_seq` VALUES (1051);
 /*!40000 ALTER TABLE `cart_items_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,13 +103,13 @@ DROP TABLE IF EXISTS `creditcard`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `creditcard` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `user_id` bigint DEFAULT NULL,
-  `cvv` varchar(45) NOT NULL,
-  `encrypted_card_number` varchar(45) NOT NULL,
+  `user_id` bigint NOT NULL,
+  `cvv` varchar(255) NOT NULL,
+  `encrypted_card_number` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKhr1mt89c02wk517aq2vvg2df` (`user_id`),
   CONSTRAINT `FKhr1mt89c02wk517aq2vvg2df` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,6 @@ CREATE TABLE `creditcard` (
 
 LOCK TABLES `creditcard` WRITE;
 /*!40000 ALTER TABLE `creditcard` DISABLE KEYS */;
-INSERT INTO `creditcard` VALUES (1,2,'saraa','rJDRK6IPr8pCaQPwjcAODw=='),(3,5,'4444','6hdodbjJPI8f9pYynetNIwbb0lJO2pSgRxctIDarhYM=');
 /*!40000 ALTER TABLE `creditcard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +139,7 @@ CREATE TABLE `order_items` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +148,6 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (5,4,5,2,190),(6,5,4,2,90);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +167,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +176,6 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (4,5,'2025-04-25 04:34:46','PENDING',190),(5,5,'2025-04-25 04:49:13','PENDING',90);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +193,7 @@ CREATE TABLE `products` (
   `price` double DEFAULT NULL,
   `image_url` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +202,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Ring','New',200,'p1.png'),(2,'Watch','New',300,'../../assets/images/p2.png'),(3,'Teddy Bear','New',110,'assets/images/p3.png'),(4,'Flower Bouquet','New',45,'assets/images/p4.png'),(5,'Teddy Bear','New',95,'assets/images/p5.png'),(6,'Flower Bouquet','New',70,'assets/images/p6.png'),(7,'Watch','New',400,'assets/images/p7.png');
+INSERT INTO `products` VALUES (1,'Ring','New',200,'assets/images/p1.png'),(2,'Watch','New',300,'assets/images/p2.png'),(3,'Teddy Bear','New',110,'assets/images/p3.png'),(4,'Flower Bouquet','New',45,'assets/images/p4.png'),(5,'Teddy Bear','New',95,'assets/images/p5.png'),(6,'Flower Bouquet','New',70,'assets/images/p6.png'),(7,'Watch','New',400,'assets/images/p7.png');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +224,7 @@ CREATE TABLE `products_seq` (
 
 LOCK TABLES `products_seq` WRITE;
 /*!40000 ALTER TABLE `products_seq` DISABLE KEYS */;
-INSERT INTO `products_seq` VALUES (1);
+INSERT INTO `products_seq` VALUES (51);
 /*!40000 ALTER TABLE `products_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +243,7 @@ CREATE TABLE `users` (
   `role` enum('ADMIN','USER') DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +252,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'sara','sara@ss','$2a$10$SzBm95Noyh80/T2D0nh3s.ZWsg7vaAosQ7u.ToSNGU2ndURMzXQu.','USER'),(3,'sama','sama@ss','$2a$10$NE1c/i/7EffcS6cx6kzCEeoQ.CBEywN4hyXeSB0snGx/GlUhb1T.S','USER'),(4,'rehap','rehapkva','$2a$10$glT0jXfq8yASUWWXh/SvyuwHaXIQmRXXDrM17e35ggQQ5d6GUpCG6','USER'),(5,'salmaa','salc','$2a$10$oJT0U0PAac4s2q8//Y6rn.Hs8QTP3hPfMVxhDFV/xO0ASI3Rwvayu','USER');
+INSERT INTO `users` VALUES (7,'aya','aya@aaa','$2a$10$wFnmjhSzDyCQACNrQnZ7yOfMxosRObNKM9NrY3dLIafS9L7w0Vyz.','USER'),(9,'sama','sam@ss','$2a$10$nbRxP4ccKb43TbaSMv0PxupHdJwaoV1dPAK0AoeDrnWpfjwvzhzgm','ADMIN'),(10,'rehap','rehabb@nnn','$2a$10$7pd66SB3Z7zzbPdoEBI9vOn8ZBvfTJJ8CM4tXzQIAhJosojz39IsG','USER');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -268,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-25 20:05:28
+-- Dump completed on 2025-05-03 23:54:58
