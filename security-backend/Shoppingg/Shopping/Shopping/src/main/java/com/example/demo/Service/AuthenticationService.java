@@ -33,7 +33,7 @@ public class AuthenticationService {
         userEntity.setUsername(user.getUsername());
         userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
         userEntity.setEmail(user.getEmail());
-        userEntity.setRole(Role.USER);
+        userEntity.setRole(Role.valueOf(user.getRole()));
         return userService.save(userEntity);
     }
     public boolean existsByUsername(String username) {

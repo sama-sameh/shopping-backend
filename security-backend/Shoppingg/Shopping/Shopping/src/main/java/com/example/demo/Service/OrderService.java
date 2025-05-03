@@ -81,5 +81,11 @@ public class OrderService {
         UserEntity userDetails = (UserEntity) authentication.getPrincipal();
         return userDetails.getId();
     }
+    public Long getOrderCount(){
+        return orderRepository.count();
+    }
+    public List<Order>getAllOrders(){
+        return orderRepository.findAll();
+    }
 }
 

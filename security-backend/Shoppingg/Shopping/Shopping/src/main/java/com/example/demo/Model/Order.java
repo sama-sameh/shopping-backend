@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name="user_id")
+    @JsonIgnore
     private UserEntity user;
     @Column(name = "total")
     private Double totalPrice;
@@ -29,6 +31,7 @@ public class Order {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<OrderItem> items;
 
 }
